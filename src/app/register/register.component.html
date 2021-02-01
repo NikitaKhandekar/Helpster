@@ -1,0 +1,62 @@
+<div class="vertical_space"></div>
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6">
+            <div class="container p-3 my-3 border">
+                <form [formGroup]="form" (ngSubmit)="onRegister()">
+                    <h3>Register</h3>
+                    <hr />
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" formControlName="username" class="form-control form-control-sm"
+                            name="username" ngModel required>
+                        <div *ngIf="f.username.invalid && (f.username.dirty || f.username.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="f.username.errors.required">
+    Please enter username
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input formControlName="password" minlength="8" name="password" type="password"
+                            class="form-control form-control-sm" ngModel required>
+                        <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="f.password.errors.required">Password is required.</div>
+                            <div *ngIf="f.password.errors.minlength">
+                                Password should be greater than 8 characters.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input formControlName="confirm_password" name="confirm_password" type="password"
+                            class="form-control form-control-sm" ngModel required>
+                        <div *ngIf="f.confirm_password.invalid && (f.confirm_password.dirty || f.confirm_password.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="f.confirm_password.errors.required">Confirm Password is required.</div>
+                            <div *ngIf="f.confirm_password.errors.confirmedValidator">Password and Confirm Password
+                                must be match.</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" formControlName="email" class="form-control form-control-sm" name="email"
+                            ngModel required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                        <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)" class="alert alert-danger">
+                            <div *ngIf="f.email.errors.required">
+                                Please enter Email
+                            </div>
+                            <div *ngIf="f.email.errors.pattern">
+                                Email is invalid
+                            </div>
+                        </div>
+                    </div>
+                    <button [disabled]="form.invalid" type="submit" class="btn btn-dark">Register</button>
+                    <div id="form_err" class="invalid-feedback"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

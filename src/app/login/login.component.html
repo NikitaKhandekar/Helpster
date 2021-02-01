@@ -1,0 +1,38 @@
+<div class="vertical_space"></div>
+<div class="container h-100">
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="col-10 col-md-8 col-lg-6">
+      <div class="container p-3 my-3 border">
+        <form novalidate #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+          <h3>Login</h3>
+          <hr />
+          <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" class="form-control form-control-sm" name="username" ngModel required
+              #username="ngModel">
+            <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+              <div *ngIf="username.errors.required">
+                Please enter name.
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" minlength="4" class="form-control form-control-sm" name="password" ngModel required
+              #password="ngModel">
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+              <div *ngIf="password.errors.required">
+                Please enter password
+              </div>
+              <div *ngIf="password.errors.minlength">
+                Password must be more than 4 characters
+              </div>
+            </div>
+          </div>
+          <button [disabled]="loginForm.invalid" type="submit" class="btn btn-dark">Login</button>
+          <div id="form_err" class="invalid-feedback"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
