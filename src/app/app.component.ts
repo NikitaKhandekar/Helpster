@@ -27,7 +27,7 @@ export class AppComponent implements OnInit, OnDestroy {
     aboutUsBtn.style.display = isLoggedIn ? 'none' : 'block';
     loginBtn.style.display = isLoggedIn ? 'none' : 'block';
     registerBtn.style.display = isLoggedIn ? 'none' : 'block';
-    menuBtn.style.display = isLoggedIn ? 'block' : 'none';
+    menuBtn.style.display = isLoggedIn ? 'none' : 'block';
 
   }
 
