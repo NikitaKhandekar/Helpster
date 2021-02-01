@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MovieListComponent } from './movielist.component';
+import { GenericComponent } from './generic.component';
 
-describe('MovieListComponent', () => {
-  let component: MovieListComponent;
-  let fixture: ComponentFixture<MovieListComponent>;
+describe('GenericComponent', () => {
+  let component: GenericComponent;
+  let fixture: ComponentFixture<GenericComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MovieListComponent ]
+      declarations: [ GenericComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MovieListComponent);
+    fixture = TestBed.createComponent(GenericComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

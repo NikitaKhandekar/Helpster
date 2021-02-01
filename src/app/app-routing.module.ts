@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MovieListComponent } from './movielist/movielist.component';
+import { GenericComponent } from './generic/generic.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
@@ -16,7 +16,7 @@ import { ShortlistComponent } from './shortlist/shortlist.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'movies', component: MovieListComponent },
+  { path: 'generic', component: GenericComponent },
   { path: 'login', component: LoginComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
@@ -34,7 +34,7 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-export const routingComponents = [MovieListComponent, HomeComponent, LoginComponent, AboutComponent,
+export const routingComponents = [GenericComponent, HomeComponent, LoginComponent, AboutComponent,
   ContactComponent, PostComponent, ProfileComponent,
   RegisterComponent, SearchComponent, ServicesComponent,
   ShortlistComponent];
