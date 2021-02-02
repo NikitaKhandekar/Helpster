@@ -7,13 +7,15 @@
                     <h3>Register</h3>
                     <hr />
                     <div class="form-group">
-                        <label for="username">Username:</label>
-                        <input type="text" formControlName="username" class="form-control form-control-sm"
-                            name="username" ngModel required>
-                        <div *ngIf="f.username.invalid && (f.username.dirty || f.username.touched)"
-                            class="alert alert-danger">
-                            <div *ngIf="f.username.errors.required">
-    Please enter username
+                        <label for="email">Email:</label>
+                        <input type="email" formControlName="email" class="form-control form-control-sm" name="email"
+                            ngModel required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                        <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)" class="alert alert-danger">
+                            <div *ngIf="f.email.errors.required">
+                                Please enter Email
+                            </div>
+                            <div *ngIf="f.email.errors.pattern">
+                                Email is invalid
                             </div>
                         </div>
                     </div>
@@ -41,15 +43,14 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" formControlName="email" class="form-control form-control-sm" name="email"
-                            ngModel required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-                        <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)" class="alert alert-danger">
-                            <div *ngIf="f.email.errors.required">
-                                Please enter Email
-                            </div>
-                            <div *ngIf="f.email.errors.pattern">
-                                Email is invalid
+                        <label for="contact">Mobile Number</label>
+                        <input formControlName="contact" minlength="10" maxlength="10" name="contact" type="tel"
+                            class="form-control form-control-sm" ngModel required>
+                        <div *ngIf="f.contact.invalid && (f.contact.dirty || f.contact.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="f.contact.errors.required">Mobile number is required.</div>
+                            <div *ngIf="f.contact.errors.minlength || f.contact.errors.maxlength">
+                                Mobile number is not valid.
                             </div>
                         </div>
                     </div>

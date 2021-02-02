@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HelpsterService } from '../helpster.service';
 import { Login } from '../Login';
 
 @Component({
@@ -12,27 +13,30 @@ export class LoginComponent implements OnInit {
 
   login = new Login('', '');
 
-  constructor(private route: Router) {
-    this.login;
+  constructor(private route: Router, private service: HelpsterService) {
   }
 
   ngOnInit(): void {
+    var loginBtn = document.getElementById('login_btn');
+    loginBtn.style.display = 'none';
   }
 
   onLogin(loginForm: NgForm) {
     let formErr = document.getElementById("form_err");
     this.login = loginForm.value;
-    let username = this.login.username
-    let password = this.login.password
+    let email = this.login.email;
+    let password = this.login.password;
 
-    let validationName = "nikita";
-    let validationPassword = "12345678";
-    if (username == validationName && password == validationPassword) {
-      this.route.navigate(['home']);
-    } else {
-      formErr.style.display = 'block'
-      formErr.textContent = "Username/Password is incorrect"
-    }
+    this.service.login(email, password)
+      .subscribe(
+        () => {
+          this.route.navigate(['home'])
+        },
+        () => {
+          formErr.style.display = 'block'
+          formErr.textContent = "Username/Password is incorrect"
+        }
+      );
   }
 
 }

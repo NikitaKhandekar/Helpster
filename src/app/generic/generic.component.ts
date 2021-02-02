@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HelpsterService } from '../helpster.service';
-import { Helpster } from '../Helpster';
+import { User } from '../User';
 
 @Component({
   selector: 'app-generic',
@@ -9,7 +9,7 @@ import { Helpster } from '../Helpster';
   styles: []
 })
 export class GenericComponent implements OnInit {
-  helpster: Helpster[] = [];
+  helpster: User[] = [];
 
   constructor(private route:Router, private service: HelpsterService) {}
 

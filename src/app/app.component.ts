@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Event, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,15 +10,25 @@ export class AppComponent implements OnInit, OnDestroy {
 
   title = 'Helpster';
 
-  constructor() { }
-  ngOnDestroy(): void {
+  constructor(private route: Router) { 
+    route.events.subscribe( (event: Event) => {
 
+      if (event instanceof NavigationStart) {
+          this.updateMenu()
+      }
+
+      if (event instanceof NavigationError) {
+          console.log(event.error);
+      }
+  });
   }
 
-  ngOnInit(): void {
-    //TODO: Read if user is loggedIn or not
-    let isLoggedIn = false
+  ngOnDestroy(): void {
+  }
 
+
+  updateMenu() {
+    let isLoggedIn: Boolean = localStorage.getItem("isUserLoggedIn") == "true";
 
     var aboutUsBtn = document.getElementById('about_us_btn');
     var loginBtn = document.getElementById('login_btn');
@@ -27,8 +38,17 @@ export class AppComponent implements OnInit, OnDestroy {
     aboutUsBtn.style.display = isLoggedIn ? 'none' : 'block';
     loginBtn.style.display = isLoggedIn ? 'none' : 'block';
     registerBtn.style.display = isLoggedIn ? 'none' : 'block';
-    menuBtn.style.display = isLoggedIn ? 'none' : 'block';
+    menuBtn.style.display = isLoggedIn ? 'block' : 'none';
+  }
 
+  ngOnInit(): void {
+    this.updateMenu()
+  }
+
+  signOut() {
+    localStorage.setItem("isUserLoggedIn", "false");
+    this.ngOnInit();
+    this.route.navigate(['login']);
   }
 
 }
