@@ -1,1 +1,36 @@
-<p>post works!</p>
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6">
+            <div class="container p-3 my-3 border">
+                <form novalidate #postForm="ngForm" (ngSubmit)="onPost(postForm)">
+                    <h3>Post a Service</h3>
+                    <hr />
+                    <div class="form-group">
+                        <label for="service">Services</label>
+                        <select placeholder="Service" name="service" (change)="changeService($event.target.value)"
+                            class="form-control form-control-sm" ngModel required #service="ngModel">
+                            <option value="" selected disabled>Select Service</option>
+                            <option *ngFor="let service of services">{{service}}</option>
+                        </select>
+                        <div *ngIf="selectedService=='' && (service.dirty || service.touched)" class="alert alert-danger">
+                            <div *ngIf="service.errors.required">Please Select Service.</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select placeholder="Category" name="category" class="form-control form-control-sm" ngModel
+                            required #category="ngModel">
+                            <option value="" selected disabled>Select Category</option>
+                            <option *ngFor="let category of categories">{{category}}</option>
+                        </select>
+                        <div *ngIf="category.invalid && (category.dirty || category.touched)" class="alert alert-danger">
+                            <div *ngIf="category.errors.required">First select a service.</div>
+                        </div>
+                    </div>
+                    <button [disabled]="postForm.invalid" type="submit" class="btn btn-dark">Post</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

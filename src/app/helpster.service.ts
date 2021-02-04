@@ -7,18 +7,26 @@ import { User } from './User';
 })
 export class HelpsterService {
   users: Array<User>
-  services: Array<string>
-  categories: Map<string, Array<string>>
+  cities: Array<string>
+  locality: Map<string, Array<string>>
 
+
+  services: Array<any> = [
+    { name: 'Household', category: ["Cooking", "Cleaning", "Washing"]},
+    { name: 'Outdoor', category: ["Security Gauard", "Gardening"]},
+    { name: 'Farm', category: ["Watering", "Monitoring", "Crop Cultivation"]},
+    { name: 'Transport', category: ["Car Cleaning", "Driving"]}
+  ];
 
   constructor() {
     this.users = new Array();
-    this.services = ["Household", "Outdoor", "Farm", "Transport"];
-    this.categories = new Map();
-    this.categories.set("Household", ["Cooking", "Cleaning", "Washing"])
-    this.categories.set("Outdoor", ["Security Gauard", "Gardening"])
-    this.categories.set("Farm", ["Watering", "Monitoring", "Crop Cultivation"])
-    this.categories.set("Transport", ["Car Cleaning", "Driving"])
+
+
+    this.cities = ["Pune", "Mumbai", "Nagpur"];
+    this.locality = new Map();
+    this.locality.set("Pune", ["Kothrud", "Bavdhan", "Kharadi", "Wakad", "Wagholi", "Hadpasar"])
+    this.locality.set("Mumbai", ["Thane", "Pavel", "Bandra", "Churgate", "CST", "Kharghar"])
+    this.locality.set("Nagpur", ["Sadar", "Buldi", "Mahal", "Vardhaman Nagar"])
   }
 
   id: number = 1
@@ -52,13 +60,25 @@ export class HelpsterService {
 
   getAllServices(): Observable<String[]> {
     return new Observable((observer) => {
-      observer.next(this.services)
+      observer.next(this.services.map(service => service.name))
     })
   }
 
   getAllCategories(service: string): Observable<String[]> {
     return new Observable((observer) => {
-      observer.next(this.categories[service])
+      observer.next(this.services.find(s => s.name == service).category)
+    })
+  }
+
+  getAllCities(): Observable<String[]> {
+    return new Observable((observer) => {
+      observer.next(this.cities)
+    })
+  }
+
+  getAllLocalities(city: string): Observable<String[]> {
+    return new Observable((observer) => {
+      observer.next(this.locality[city])
     })
   }
 
