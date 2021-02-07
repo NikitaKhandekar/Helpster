@@ -1,20 +1,16 @@
-<div class="toolbar" role="banner">
-  <img alt="Logo" src="assets/logow.png" routerLink="/home">
-  <div class="spacer"></div>
-  <button id="about_us_btn" routerLink="/about">About Us</button>
-  <button id="login_btn" routerLink="/login">Login</button>
-  <button id="register_btn" routerLink="/register">Register</button>
-  <div class="dropdown">
-    <button id="menu_btn" class="menu_btn">Menu</button>
-    <div class="dropdown-content">
-      <a routerLink="/movies">Edit Profile</a>
-      <a routerLink="/services">My Services</a>
-      <a routerLink="/shortlist">Shortlisted</a>
-      <a routerLink="/contact">Contacted</a>
-      <a routerLink="/about">About Us</a>
-      <a (click)="signOut()">Sign Out</a>
+<!--
+
+<div class="row" id="whole">
+    <div class="col"></div>
+    <div>
+        <app-header></app-header>
+        <div style="margin-top: 20px;">
+            <router-outlet></router-outlet>
+            </div>
     </div>
-  </div>
+    <div class="col"></div>
 </div>
-<div class="vertical_space"></div>
+-->
+
+<app-header></app-header>
 <router-outlet></router-outlet>

@@ -1,0 +1,17 @@
+
+<div class="container"style="padding-top: 70px;padding-bottom: 60px; width:500px">
+    <div class="card-header" style="text-align: center;"><h2>Admin Login</h2></div>
+    <div class="card card-body">
+        <form class="form-signin" (ngSubmit)="onSubmit()">
+            <span id="reauth-email" class="reauth-email"></span>
+            <label for="email" class="col-md-3 control-label">Email</label>
+            <input type="text" id="email" placeholder="Enter email" required [(ngModel)]="admin.email"class="form-control" name="email" autofocus><br>
+            <label for="password" class="col-sm-3 control-label">Password</label>
+            <input type="password" id="password" placeholder="Enter password" required [(ngModel)]="admin.password"class="form-control" name="password" autofocus><br>   
+
+<br>
+            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Login</button>
+        </form>
+    </div>
+</div>
+

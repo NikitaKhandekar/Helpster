@@ -1,0 +1,31 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Helpster List</h2>
+    </div>
+    <button (click)="onAdd()" class="btn btn-info" style="margin-left: 20px">Add Helpster</button>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Helpster ID</th>
+            <th>Helpster Name</th>
+            <th>Helpster Email</th>
+            <th>Helpster Password</th>
+            <th>Helpster Contact No.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let helpster of helpsterList">
+            <td>{{helpster.id}}</td>
+            <td>{{helpster.firstName+" "+helpster.lastName}}</td>
+            <td>{{helpster.email}}</td>
+            <td>{{helpster.password}}</td>
+            <td>{{helpster.contactNo}}</td>
+          <td><button (click)="onDelete(helpster.id)" class="btn btn-danger">Delete</button>
+       <button (click)="onEdit(helpster)" class="btn btn-info" style="margin-left: 10px">Update</button>
+            </td> 
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

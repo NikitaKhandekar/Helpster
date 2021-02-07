@@ -1,0 +1,79 @@
+
+
+<div class="container">
+    <h2>Add Service</h2>
+    <form class="form-horizontal" role="form" (ngSubmit)="onSubmit()">
+                   <div class="form-group">
+                   <div class="input-select">
+                       <label for="serviceName" class="col-sm-3 control-label">Service Type :</label>
+                    <input type="text" [value]="service.serviceName"  readonly>
+                    </div>
+                   </div>
+   
+                   <div class="form-group">
+                     <div class="input-select">
+                     <label for="category" class="col-sm-3 control-label">Category :</label>
+                        <input type="text" [value]="service.category" readonly></div>
+                   </div>
+   
+   
+                   <div class="form-group">
+                     <div class="input-field2">
+                       <label for="city" class="col-sm-3 control-label">City :</label>
+                       <select data-trigger="" [(ngModel)]="service.city" name="city">
+                        <option *ngFor="let city of cities"  required>{{city}}</option>
+                      </select>
+                     </div>
+                   </div>
+                   
+                   <div class="form-group">
+                     <label for="Locality" class="col-sm-3 control-label">Locality :</label>
+                       <input type="text" value="All" [(ngModel)]="service.locality" name="locality">
+                     </div>
+   
+   
+                     <div class="form-group">
+                    <div class="input-field3">
+                     <label for="description" class="col-sm-3 control-label">Description :</label>
+                        <input type="text" [(ngModel)]="service.description" name="description" >
+                       </div>    
+                     </div>
+   
+                     <div class="form-group">
+                     <div class="days">
+                       <label for="availableDays" class="col-sm-3 control-label">Days available :</label>
+                        <input type="checkbox" value="MONDAY" (change)=addDay($event) checked/>
+                        <label > Monday </label>
+                   
+                         <input type="checkbox" value="TUESDAY" (change)=addDay($event) checked />
+                         <label > Tuesday </label>
+                   
+                          <input type="checkbox"  value="WEDNESDAY" (change)=addDay($event) checked />
+                          <label > Wednesday </label>
+                          
+                          <input type="checkbox"  value="THURSDAY" (change)=addDay($event) checked />
+                          <label > Thursday </label>
+   
+                          <input type="checkbox" value="FRIDAY" (change)=addDay($event) checked />
+                          <label > Friday </label>
+   
+                          <input type="checkbox"  value="SATURDAY" (change)=addDay($event) checked />
+                          <label > Saturday </label>
+   
+                          <input type="checkbox"  value="SUNDAY" (change)=addDay($event) checked />
+                          <label > Sunday </label>
+                         </div>
+                       </div>
+   
+                       <div class="form-group">
+                               <div class="mob"> <label class="text-grey mr-1">From :</label> <input class="ml-1" type="time" [(ngModel)]="service.startTime" name="startTime"> </div>
+                               <div class="mob"> <label class="text-grey mr-4">To :</label> <input class="ml-1" type="time" [(ngModel)]="service.endTime" name="endTime"> </div>
+                               <div class="mt-1 cancel fa fa-times text-danger"></div>
+                       </div>
+                       
+   
+   <button type="submit" class="btn btn-primary btn-block">Submit</button>
+   </form>
+   <br>
+   <span *ngIf="successfullyEdited">Service edited successfully</span>
+   </div>

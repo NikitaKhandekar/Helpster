@@ -1,0 +1,48 @@
+<p>search-service works!</p>
+
+<div class="container">
+    <h2>Search Services</h2>
+    <form class="form-horizontal" role="form" (ngSubmit)="onSubmit()">
+                   <div class="form-group">
+                   <div class="input-select">
+                       <label for="serviceName" class="col-sm-3 control-label">Service Type :</label>
+                       <select placeholder="serviceName" [(ngModel)]="service.serviceName" (change)="changeServiceName($event)" name="serviceName" required>
+                        <option>All</option> 
+                        <option *ngFor="let service of displayServices">{{service}}</option>   
+                             
+                       </select>
+                     </div>
+                   </div>
+   
+                   <div class="form-group">
+                     <div class="input-select">
+                       <label for="category" class="col-sm-3 control-label">Category :</label>
+                       <select placeholder="category" [(ngModel)]="service.category" name="category" required>
+                        <option>All</option>
+                        <option *ngFor="let category of displayCategories" value="{{category}}">{{category}}</option>
+                        
+                         
+                       </select>
+                     </div>
+                   </div>
+   
+   
+                   <div class="form-group">
+                     <div class="input-field2">
+                       <label for="city" class="col-sm-3 control-label">City :</label>
+                       <select data-trigger="" [(ngModel)]="service.city" name="city" required>
+                        <option>All</option>
+                        <option *ngFor="let city of cities" required>{{city}}</option>
+                       </select>
+                     </div>
+                   </div>
+                   
+                   <div class="form-group">
+                     <label for="Locality" class="col-sm-3 control-label">Locality :</label>
+                       <input (focus)="onFocus($event)" (focusout)="onOutFocus($event)" type="text" value="All" [(ngModel)]="service.locality" name="locality">
+                     </div>
+   
+   <button type="submit" class="btn btn-primary btn-block">Submit</button>
+   </form>
+   <br>
+   </div>

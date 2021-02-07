@@ -1,0 +1,42 @@
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Booking List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Booking Info</th>            
+            <th>Service Info</th>
+            <th>Helpster Info</th>
+            <th>Feedback Info</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let booking of bookingList;">
+            <td>Booking_Id : {{booking.bookingId}}<br>
+              Date : {{booking.bookingDate}}
+            </td>
+            <td>Service_Id : {{booking.associatedService.serviceId}}<br>
+            Type : {{booking.associatedService.serviceName}}<br>
+            Category : {{booking.associatedService.category}}<br>
+            Description : {{booking.associatedService.description}}<br>
+            City : {{booking.associatedService.city}}<br>
+            Locality : {{booking.associatedService.locality}}<br>
+            Rating : {{booking.associatedService.rating}}</td>
+            <td>Name : {{booking.associatedService.associatedHelpster.firstName+" "+booking.associatedService.associatedHelpster.lastName}}<br>
+              Email : {{booking.associatedService.associatedHelpster.email}}<br>
+            Contact No : {{booking.associatedService.associatedHelpster.contactNo}}<br>
+            <td>
+              <button *ngIf="booking.feedbackDescription=='' || booking.rating==-1 " (click)="goToFeedbackPage(booking)" class="btn btn-info" style="margin-left: 10px">Give Feedback</button>
+              <div *ngIf="booking.feedbackDescription!='' && booking.rating>=0 " >
+                Rating : {{booking.rating}}<br>
+                Comments : {{booking.feedbackDescription}}<br></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

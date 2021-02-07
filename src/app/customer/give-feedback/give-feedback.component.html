@@ -1,0 +1,60 @@
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h4>Booking Info</h4>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Booking</th>
+            <th>Service Info</th>
+            <th>Helpster Info</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Booking_id : {{booking.bookingId}}</td>
+            <td>Service_Id : {{booking.associatedService.serviceId}}<br>
+            Type : {{booking.associatedService.serviceName}}<br>
+            Category : {{booking.associatedService.category}}<br>
+            Description : {{booking.associatedService.description}}<br>
+            City : {{booking.associatedService.city}}<br>
+            Locality : {{booking.associatedService.locality}}<br>
+            Rating : {{booking.associatedService.rating}}</td>
+            <td>Name : {{booking.associatedService.associatedHelpster.firstName+" "+booking.associatedService.associatedHelpster.lastName}}<br>
+                Email : {{booking.associatedService.associatedHelpster.email}}<br>
+                Contact No : {{booking.associatedService.associatedHelpster.contactNo}}<br>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="container">
+                <form class="form-horizontal" role="form" (ngSubmit)="onSubmit()">
+                   <h4> Give FeedBack </h4> 
+                    <div class="form-group">
+                        <label for="rating " class="col-sm-3 control-label">Rating</label>
+                        <select data-trigger="" [(ngModel)]="bookingFeedback.rating" name="rating">
+                            <option>0</option><option>0.5</option>
+                            <option>1</option><option>1.5</option>
+                            <option>2</option><option>2.5</option>
+                            <option>3</option><option>3.5</option>
+                            <option>4</option><option>4.5</option>
+                            <option>5</option>
+                          </select>
+                        
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description" class="col-sm-3 control-label">Comments :</label>
+                        <div class="col-sm-9">
+                            <textarea  rows="8" cols="50" [(ngModel)]="bookingFeedback.feedbackDescription" name="feedbackDescription"></textarea>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">Submit Feedback</button>
+                </form> 
+            </div> 
+    </div>
+  </div>

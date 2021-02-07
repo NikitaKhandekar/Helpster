@@ -1,0 +1,36 @@
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Service List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Service ID</th>
+            <th>Service Info</th>
+            <th>Location</th>
+            <th>Availibility</th>
+            <th>Average rating</th>
+            <th>Delete/Update</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let service of serviceList">
+            <td>{{service.serviceId}}</td>
+            <td>Service Type :{{service.serviceName}}<br>
+                Category :{{service.category}}<br>
+                Description : --{{service.description}}</td>
+            <td>City : {{service.city}}<br>
+                Locality : {{service.locality}}</td>
+            <td>Available Days :<br>{{service.availableDays}}<br>
+            <br>Time : {{service.startTime+" to "+service.endTime}}</td>
+            <td>{{service.rating}}</td>
+            <td><button (click)="onDelete(service.serviceId)" class="btn btn-danger">Delete</button>
+              <button (click)="onEdit(service.serviceId)" class="btn btn-info" style="margin-left: 10px">Update</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

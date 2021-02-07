@@ -1,0 +1,53 @@
+<div class="container">
+    <h2>Edit profile</h2>
+            <form class="form-horizontal" role="form" (ngSubmit)="onSubmit()">
+                
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-3 control-label">First Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="firstName"  class="form-control" autofocus  [(ngModel)]="helpster.firstName" name="firstName" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastName" class="col-sm-3 control-label">Last Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="lastName" class="form-control" autofocus [(ngModel)]="helpster.lastName" name="lastName" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">Email* </label>
+                    <div class="col-sm-9">
+                        <input type="email" id="email" class="form-control" [(ngModel)]="helpster.email" name="email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label">Password*</label>
+                    <div class="col-sm-9">
+                        <input type="password" id="password" class="form-control" [(ngModel)]="helpster.password" name="password" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label">Confirm Password*</label>
+                    <div class="col-sm-9">
+                        <input type="password" id="password"  class="form-control" required>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="contactNo" class="col-sm-3 control-label">Contact no*</label>
+                    <div class="col-sm-9">
+                        <input type="tel" id="contactNo"  class="form-control" [(ngModel)]="helpster.contactNo" name="contactNo" required>
+                    </div>
+                </div>
+                <br>
+            <br>
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <span class="help-block">*Required fields</span>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            </form> <!-- /form -->
+        </div> <!-- ./container -->
+     

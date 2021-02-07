@@ -1,0 +1,26 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Service List</h2>
+    </div>
+
+   <button (click)="onAdd()" class="btn btn-info" style="margin-left: 20px">Add new service</button>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Service Name</th>
+            <th>Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let category of categoryList">
+            <td>{{category.associatedListedService.serviceName}}</td>
+            <td>{{category.cName}}</td>
+            <td>
+             <button (click)="onDelete(category.cId)" class="btn btn-danger" style="margin-left: 10px">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

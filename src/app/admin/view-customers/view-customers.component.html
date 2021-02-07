@@ -1,0 +1,31 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Customer List</h2>
+    </div>
+    <button (click)="onAdd()" class="btn btn-info" style="margin-left: 20px">Add Customer</button>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Customer ID</th>
+            <th>Customer Name</th>
+            <th>Customer Email</th>
+            <th>Customer Password</th>
+            <th>Customer Contact No.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let Customer of customerList">
+            <td>{{Customer.id}}</td>
+            <td>{{Customer.firstName+" "+Customer.lastName}}</td>
+            <td>{{Customer.email}}</td>
+            <td>{{Customer.password}}</td>
+            <td>{{Customer.contactNo}}</td>
+          <td><button (click)="onDelete(Customer.id)" class="btn btn-danger">Delete</button>
+           <button (click)="onEdit(Customer)" class="btn btn-info" style="margin-left: 10px">Update</button>
+            </td> 
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
